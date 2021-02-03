@@ -1,12 +1,12 @@
-{
-    "name": "nelexa/http-client-simple-cache",
+o{
+    "name": "pixelgroup/http-client-simple-cache",
     "description": "Guzzle-based HTTP Client with the ability to customize caching of the processed HTTP request results (not based on HTTP headers).",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ne-Lexa",
-            "email": "alexey@nelexa.ru"
+            "name": "Pixel Group",
+            "email": "amit@pixelgroup.io"
         }
     ],
     "minimum-stability": "stable",
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nelexa\\HttpClient\\": "src/"
+            "Pixelgroup\\HttpClient\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nelexa\\HttpClient\\Tests\\": "tests/"
+            "Pixelgroup\\HttpClient\\Tests\\": "tests/"
         }
     },
     "suggest": {
