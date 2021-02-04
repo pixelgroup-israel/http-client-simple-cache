@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nelexa\HttpClient;
+namespace Pixelgroup\HttpClient;
 
 use GuzzleHttp\RequestOptions;
 

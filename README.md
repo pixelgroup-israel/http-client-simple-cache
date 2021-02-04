@@ -1,16 +1,6 @@
-# nelexa/http-client-simple-cache
+# pixelgroup/http-client-simple-cache
 
 Guzzle-based HTTP Client with the ability to customize caching of the processed HTTP request results (not based on HTTP headers).
-
-[![Packagist Version](https://img.shields.io/packagist/v/nelexa/http-client-simple-cache.svg?style=popout)](https://packagist.org/packages/nelexa/http-client-simple-cache)
-![PHP from Packagist](https://img.shields.io/packagist/php-v/nelexa/http-client-simple-cache.svg?style=popout&color=yellowgreen)
-[![License](https://img.shields.io/packagist/l/nelexa/http-client-simple-cache.svg?style=popout&color=01f176)](https://packagist.org/packages/nelexa/http-client-simple-cache)
-
-[![Travis Build Status](https://img.shields.io/travis/Ne-Lexa/http-client-simple-cache/master.svg?label=Travis&style=popout)](https://travis-ci.org/Ne-Lexa/http-client-simple-cache)
-![Scrutinizer build](https://img.shields.io/scrutinizer/build/g/Ne-Lexa/http-client-simple-cache/master.svg?label=Scrutinizer&style=popout)
-![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/Ne-Lexa/http-client-simple-cache/master.svg?style=popout)
-![Scrutinizer coverage](https://img.shields.io/scrutinizer/coverage/g/Ne-Lexa/http-client-simple-cache/master.svg?style=popout)
-
 
 ## Documentation
 Guzzle docs: http://docs.guzzlephp.org/en/stable/
@@ -19,14 +9,14 @@ Guzzle docs: http://docs.guzzlephp.org/en/stable/
 ```php
 <?php
 
-$client = new \Nelexa\HttpClient\HttpClient();
+$client = new \Pixelgroup\HttpClient\HttpClient();
 ```
 Set default options:
 ```php
 <?php
 
-$client = new \Nelexa\HttpClient\HttpClient([
-    \Nelexa\HttpClient\Options::HEADERS => [
+$client = new \Pixelgroup\HttpClient\HttpClient([
+    \Pixelgroup\HttpClient\Options::HEADERS => [
         'User-Agent' => 'TestHttpClient/1.0',
     ],
 ]);
@@ -36,9 +26,9 @@ $client = new \Nelexa\HttpClient\HttpClient([
 ```php
 <?php
 
-$client = new \Nelexa\HttpClient\HttpClient();
+$client = new \Pixelgroup\HttpClient\HttpClient();
 $result = $client->get($url, [
-    \Nelexa\HttpClient\Options::HANDLER_RESPONSE => $callable
+    \Pixelgroup\HttpClient\Options::HANDLER_RESPONSE => $callable
 ]);
 ```
 Callable signature:
@@ -51,12 +41,12 @@ Example:
 ```php
 <?php
 
-$client = new \Nelexa\HttpClient\HttpClient();
+$client = new \Pixelgroup\HttpClient\HttpClient();
 
 // use \Closure handler
 
 $base64Contents = $client->get($url, [
-    \Nelexa\HttpClient\Options::HANDLER_RESPONSE => static function (Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response) {
+    \Pixelgroup\HttpClient\Options::HANDLER_RESPONSE => static function (Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response) {
         return base64_encode($response->getBody()->getContents());
     },
 ]);
@@ -64,7 +54,7 @@ $base64Contents = $client->get($url, [
 // or use class handler
 
 $base64Contents = $client->get($url, [
-    \Nelexa\HttpClient\Options::HANDLER_RESPONSE => new class() implements \Nelexa\HttpClient\ResponseHandlerInterface {
+    \Pixelgroup\HttpClient\Options::HANDLER_RESPONSE => new class() implements \Pixelgroup\HttpClient\ResponseHandlerInterface {
     
         public function __invoke(Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response)
         {
@@ -84,7 +74,7 @@ Example install:
 composer require symfony/cache
 ```
 
-Add option `\Nelexa\HttpClient\Options::CACHE_TTL` with `\DateInterval` value.
+Add option `\Pixelgroup\HttpClient\Options::CACHE_TTL` with `\DateInterval` value.
 
 Example:
 ```php
@@ -92,12 +82,12 @@ Example:
 
 class Api
 {
-    /** @var \Nelexa\HttpClient\HttpClient */
+    /** @var \Pixelgroup\HttpClient\HttpClient */
     private $httpClient;
 
     public function __construct(Psr\SimpleCache\CacheInterface $cache)
     {
-        $this->httpClient = new \Nelexa\HttpClient\HttpClient([], $cache);
+        $this->httpClient = new \Pixelgroup\HttpClient\HttpClient([], $cache);
     }
 
     /**
@@ -109,9 +99,9 @@ class Api
     {
         return $this->httpClient->request('GET', 'https://httpbin.org/uuid', [
             
-            \Nelexa\HttpClient\Options::CACHE_TTL => \DateInterval::createFromDateString('1 min'), // required TTL
+            \Pixelgroup\HttpClient\Options::CACHE_TTL => \DateInterval::createFromDateString('1 min'), // required TTL
             
-            \Nelexa\HttpClient\Options::HANDLER_RESPONSE => static function (Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response) {
+            \Pixelgroup\HttpClient\Options::HANDLER_RESPONSE => static function (Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response) {
                 $contents = $response->getBody()->getContents();
                 $json = \GuzzleHttp\json_decode($contents, true);
 
@@ -145,9 +135,9 @@ $urls = [
     'webp' => 'https://httpbin.org/image/webp',
 ];
 
-$client = new \Nelexa\HttpClient\HttpClient();
+$client = new \Pixelgroup\HttpClient\HttpClient();
 $result = $client->requestAsyncPool('GET', $urls, [
-    \Nelexa\HttpClient\Options::HANDLER_RESPONSE => static function (Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response) {
+    \Pixelgroup\HttpClient\Options::HANDLER_RESPONSE => static function (Psr\Http\Message\RequestInterface $request, Psr\Http\Message\ResponseInterface $response) {
         return getimagesizefromstring($response->getBody()->getContents());
     },
 ], $concurrency = 2);

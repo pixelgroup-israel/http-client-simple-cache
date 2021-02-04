@@ -4,7 +4,7 @@
 
 declare(strict_types=1);
 
-namespace Nelexa\HttpClient\Tests;
+namespace Pixelgroup\HttpClient\Tests;
 
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
@@ -13,8 +13,8 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\TransferStats;
-use Nelexa\HttpClient\HttpClient;
-use Nelexa\HttpClient\Options;
+use Pixelgroup\HttpClient\HttpClient;
+use Pixelgroup\HttpClient\Options;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

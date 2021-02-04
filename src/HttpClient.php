@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Nelexa\HttpClient;
+namespace Pixelgroup\HttpClient;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use Nelexa\HttpClient\Utils\HashUtil;
+use Pixelgroup\HttpClient\Utils\HashUtil;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\SimpleCache\CacheInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nelexa\HttpClient;
+namespace Pixelgroup\HttpClient;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

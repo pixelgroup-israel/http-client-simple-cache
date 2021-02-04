@@ -4,10 +4,10 @@
 
 declare(strict_types=1);
 
-namespace Nelexa\HttpClient\Tests;
+namespace Pixelgroup\HttpClient\Tests;
 
-use Nelexa\HttpClient\ResponseHandlerInterface;
-use Nelexa\HttpClient\Utils\HashUtil;
+use Pixelgroup\HttpClient\ResponseHandlerInterface;
+use Pixelgroup\HttpClient\Utils\HashUtil;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
